@@ -1,4 +1,4 @@
-package homeWork.homeWork1._2056_v2;
+package homeWork.homeWork3._2056;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,13 +19,10 @@ public class Solution {
             file = new File(args[0]);
         }
         Path path = Paths.get(".");
-        // Scanner scanner = new Scanner(System.in);
+        //System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         while (file == null || !file.exists()) {
-            // System.out.println("The current work directory is: " + path.toRealPath(LinkOption.NOFOLLOW_LINKS));
-            //System.out.println("Please, enter full path to input file: ");
-            file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\input.txt");
+            file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         }
-        //scanner.close();
         Map<String, Integer> words = new TreeMap<>();
         Integer maxCount = 1;
         try (BufferedReader BR = new BufferedReader(new FileReader(file))) {
