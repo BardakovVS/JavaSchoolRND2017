@@ -1,12 +1,10 @@
 package homeWork.homeWork3._2056;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,9 +13,6 @@ public class Solution {
     public static void main(String[] args) throws IOException {
 
         File file = null;
-        if (args.length > 0) {
-            file = new File(args[0]);
-        }
         Path path = Paths.get(".");
         //System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         while (file == null || !file.exists()) {
@@ -25,29 +20,30 @@ public class Solution {
         }
 
         Map<String, Integer> words = new TreeMap<>();
-        Integer maxCount = 1;
+        int maxCount = 1;
         try (BufferedReader BR = new BufferedReader(new FileReader(file))) {
             String str;
             while ((str = BR.readLine()) != null) {
-                for (String temp : str.split(" ")) {
-                    String lowerTrimString = temp.toLowerCase().trim();
-                    if (!"".equals(lowerTrimString)) {
-                        if (words.containsKey(lowerTrimString)) {
-                            words.put(lowerTrimString, words.get(lowerTrimString) + 1);
-                            if (words.get(lowerTrimString).compareTo(maxCount) > 0) {
-                                maxCount = words.get(lowerTrimString);
+                for (String tempStr : str.split(" ")) {
+                    String lowerString = tempStr.toLowerCase().trim();
+                    if (!"".equals(lowerString)) {
+                        if (words.containsKey(lowerString)) {
+                            words.put(lowerString, words.get(lowerString) + 1);
+                            if (words.get(lowerString).compareTo(maxCount) > 0) {
+                                maxCount = words.get(lowerString);
                             }
                         } else {
-                            words.put(temp.toLowerCase(), 1);
+                            words.put(tempStr.toLowerCase(), 1);
                         }
                     }
                 }
             }
-            for (String temp : words.keySet()) {
-                if (words.get(temp) == maxCount) {
-                    System.out.println(temp);
+            for (String tempStr : words.keySet()) {
+                if (words.get(tempStr) == maxCount) {
+                    System.out.println(tempStr);
                 }
             }
         }
+
     }
 }
