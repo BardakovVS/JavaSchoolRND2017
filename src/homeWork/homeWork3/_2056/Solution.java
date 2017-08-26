@@ -23,6 +23,7 @@ public class Solution {
         while (file == null || !file.exists()) {
             file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         }
+
         Map<String, Integer> words = new TreeMap<>();
         Integer maxCount = 1;
         try (BufferedReader BR = new BufferedReader(new FileReader(file))) {
@@ -30,16 +31,15 @@ public class Solution {
             while ((str = BR.readLine()) != null) {
                 for (String temp : str.split(" ")) {
                     String lowerTrimString = temp.toLowerCase().trim();
-                    if ("".equals(lowerTrimString)) {
-                        continue;
-                    }
-                    if (words.containsKey(lowerTrimString)) {
-                        words.put(lowerTrimString, words.get(lowerTrimString) + 1);
-                        if (words.get(lowerTrimString).compareTo(maxCount) > 0) {
-                            maxCount = words.get(lowerTrimString);
+                    if (!"".equals(lowerTrimString)) {
+                        if (words.containsKey(lowerTrimString)) {
+                            words.put(lowerTrimString, words.get(lowerTrimString) + 1);
+                            if (words.get(lowerTrimString).compareTo(maxCount) > 0) {
+                                maxCount = words.get(lowerTrimString);
+                            }
+                        } else {
+                            words.put(temp.toLowerCase(), 1);
                         }
-                    } else {
-                        words.put(temp.toLowerCase(), 1);
                     }
                 }
             }

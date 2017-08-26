@@ -1,2 +1,4 @@
-a aa aaa aaaa
-a aa aaa bbbb
+dd bb  cc   aa
+dd bb  cc     aa
+
+aa bb cc dd
