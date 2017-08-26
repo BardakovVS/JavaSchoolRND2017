@@ -29,11 +29,11 @@ public class Solution {
                     if (!"".equals(lowerString)) {
                         if (words.containsKey(lowerString)) {
                             words.put(lowerString, words.get(lowerString) + 1);
-                            if (words.get(lowerString).compareTo(maxCount) > 0) {
+                            if (words.get(lowerString) > maxCount) {
                                 maxCount = words.get(lowerString);
                             }
                         } else {
-                            words.put(tempStr.toLowerCase(), 1);
+                            words.put(lowerString, 1);
                         }
                     }
                 }
