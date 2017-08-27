@@ -1,10 +1,8 @@
 package homeWork.homeWork3._2056;
 
 import java.io.*;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -16,7 +14,8 @@ public class Solution {
         Path path = Paths.get(".");
         //System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         while (file == null || !file.exists()) {
-            file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
+           // file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
+            file = new File("input.txt");
         }
 
         Map<String, Integer> words = new TreeMap<>();
@@ -44,6 +43,5 @@ public class Solution {
                 }
             }
         }
-
     }
 }
