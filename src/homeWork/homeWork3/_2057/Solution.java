@@ -11,13 +11,13 @@ public class Solution {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         Deque<Integer> stack = new LinkedList<>();
         int n = scanner.nextInt();
-        int i = 0, j = 0;
+        int /*i = 0,*/ j = 0;
         int tempScaner;
-        while ((i < n) & (j < n)) {
+        while (/*(i < n) & */(j < n)) {
             tempScaner = scanner.nextInt();
             if (tempScaner == 1) {
                 pq.add(scanner.nextInt());
-                i--;
+               // i--;
                 //System.out.println(pq.toString());
             } else if (tempScaner == 2) {
                 //System.out.println(pq.peek());
@@ -25,7 +25,7 @@ public class Solution {
                 pq.remove(pq.peek());
                 //System.out.println(pq.toString());
             }
-            i++;
+           // i++;
             j++;
         }
         for (Integer iStack : stack) {
