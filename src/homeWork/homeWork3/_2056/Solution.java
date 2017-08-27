@@ -14,10 +14,9 @@ public class Solution {
         Path path = Paths.get(".");
         //System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         while (file == null || !file.exists()) {
-           // file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
+            // file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
             file = new File("input.txt");
         }
-
         Map<String, Integer> words = new TreeMap<>();
         int maxCount = 1;
         try (BufferedReader BR = new BufferedReader(new FileReader(file))) {
