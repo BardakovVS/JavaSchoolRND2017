@@ -11,7 +11,7 @@ public class Solution {
     public static void main(String[] args) throws IOException {
 
         File file = null;
-        Path path = Paths.get(".");
+        //Path path = Paths.get(".");
         //System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");
         while (file == null || !file.exists()) {
             // file = new File(path.toRealPath(LinkOption.NOFOLLOW_LINKS) + "\\src\\homeWork\\homeWork3\\_2056\\input.txt");

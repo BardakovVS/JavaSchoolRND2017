@@ -1,6 +1,5 @@
 package homeWork.homeWork3._2057;
 
-
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -28,8 +27,6 @@ public class Solution {
             }
             i++;
             j++;
-//            System.out.println("i = " + i + " j = " + j);
-
         }
         for (Integer iStack : stack) {
             System.out.println(iStack);
