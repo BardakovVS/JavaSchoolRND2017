@@ -7,7 +7,7 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 
-public class LinkedList<E> extends AbstractCollection<E> /*implements Iterator<E>*/ {
+public class LinkedList<E> extends AbstractCollection<E> {
 
 
     private static class OneNode<T> {
