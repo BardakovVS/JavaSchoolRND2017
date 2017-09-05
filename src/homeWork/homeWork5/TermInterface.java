@@ -67,15 +67,26 @@ public class TermInterface extends JFrame {
             } else if (event.getSource() == pass) {
                 string = String.format("Pass: %s", event.getActionCommand());
             } else if (event.getSource() == button1) {
-                if (pinValidator.validation(pole1.getText(), Integer.parseInt(pass.getText()))) {
-                    if (server.spisanie(pole1.getText(), Integer.parseInt(pole2.getText()))) {
-                        string = String.format("Списано: " + pole2.getText() + "\n" +
-                                "Остаток: " + server.getOstatok(pole1.getText()), event.getActionCommand());
+
+                try {
+                    if (pinValidator.validation(pole1.getText(), Integer.parseInt(pass.getText()))) {
+//                       try {
+                        if (server.spisanie(pole1.getText(), Integer.parseInt(pole2.getText()))) {
+                            string = String.format("Списано: " + pole2.getText() + "\n" +
+                                    "Остаток: " + server.getOstatok(pole1.getText()), event.getActionCommand());
+                        } else {
+                            string = "НЕДОСТАТОЧНО СРЕДСТВ ДЛЯ СПИСАНИЯ" + "\n" + "Остаток: " + server.getOstatok(pole1.getText());
+                        }
+//                       } catch (IllegalArgumentException e) {
+//                           string = "Сумма должна быть кратной 100!";
+//                       }
                     } else {
-                        string = "НЕДОСТАТОЧНО СРЕДСТВ ДЛЯ СПИСАНИЯ" + "\n" + "Остаток: " + server.getOstatok(pole1.getText());
+                        string = "НЕВЕРНЫЙ ПИН";
                     }
-                } else {
-                    string = "НЕВЕРНЫЙ ПИН";
+                } catch (NullPointerException e) {
+                    string = "Счет не найден!";
+                } catch (IllegalArgumentException e) {
+                    string = "Сумма должна быть кратной 100!";
                 }
 
             } else if (event.getSource() == button2) {
