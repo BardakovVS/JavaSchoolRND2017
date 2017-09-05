@@ -180,7 +180,7 @@ public class Calculator {
                             Calculations calculations = new Calculations(/*displayField.getText()*/);
                             //string = calculations.getCalculation(displayField.getText());
                             string = proxy.getCalculation(displayField.getText());
-                            displayField.setText(displayField.getText() + string);
+                            displayField.setText(displayField.getText() +" "+ string);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, "Некорректное выражение!");
                         }
