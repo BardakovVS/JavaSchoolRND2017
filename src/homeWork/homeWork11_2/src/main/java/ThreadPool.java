@@ -1,4 +1,5 @@
 package homeWork.homeWork11_2.src.main.java;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,8 +12,8 @@ public class ThreadPool implements ThreadPoolInterface {
     private boolean appStop = false;
     private int threadsNumberMin;
     private int threadsNumberMax;
-    private boolean killThread = false;
-    //private int startedThreads;
+    private volatile boolean killThread = false;
+    private int startedThreads;
 
     public ThreadPool(int threadsNumberMin) {
         this.threadsNumberMin = threadsNumberMin;
@@ -57,6 +58,10 @@ public class ThreadPool implements ThreadPoolInterface {
                     threads[this.getThreadsNumber()-1].interrupt();
                 }
                 /////////////////////
+//                System.err.println("--- worksQueue.size() =" + worksQueue.size());
+//                System.err.println("--- this.getThreadsNumber() =" + this.getThreadsNumber());
+                /////////////////////
+
                 worksQueue.notify();
             }
         }
@@ -94,7 +99,7 @@ public class ThreadPool implements ThreadPoolInterface {
                             //System.out.println("Поток " + Thread.currentThread().getName() + ", жду работу!");
                             worksQueue.wait();
                         } catch (InterruptedException e) {
-                            System.out.println("****************");
+                            //System.out.println("****************");
                             interrupt();
                         }
                     }
@@ -104,11 +109,19 @@ public class ThreadPool implements ThreadPoolInterface {
                         runnable.run();
                     }
                 }
+                ///////////////////////////////
+                if (worksQueue.size() < getThreadsNumber()-1 && getThreadsNumber() > threadsNumberMin) {
+                    System.err.println("*** worksQueue.size() =" + worksQueue.size());
+                    System.err.println("*** this.getThreadsNumber() =" + getThreadsNumber());
+                    threads[getThreadsNumber()-1].interrupt();
+                    threads[getThreadsNumber()-1]=null;
+                }
+                //////////////////////////////
                 try {
                     //System.out.println("Поток " + Thread.currentThread().getName() + ", жду работу!");
                     Thread.currentThread().sleep(2000);
                 } catch (InterruptedException e) {
-                    System.err.println(" end sleep " + Thread.currentThread().getName());
+                    //System.err.println(" end sleep " + Thread.currentThread().getName());
                     //e.printStackTrace();
                     interrupt();
                 }
@@ -122,4 +135,5 @@ public class ThreadPool implements ThreadPoolInterface {
             }
         }
     }
+
 }

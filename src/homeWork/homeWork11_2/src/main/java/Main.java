@@ -1,33 +1,54 @@
 package homeWork.homeWork11_2.src.main.java;
-
 /**
  * Created by bardakov_vs on 27.09.2017.
  */
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        ThreadPool threadPool = new ThreadPool(3, 10);
-        for (int i = 0; i < 51; i++) {
+        final ThreadPool threadPool = new ThreadPool(3, 10);
+        for (int i = 0; i < 30; i++) {
             final int num = i;
-            final int threadsNumber = threadPool.getThreadsNumber();
             ///////////////////////////////
             try {
-                Thread.currentThread().sleep(200);
+                Thread.currentThread().sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             ///////////////////////////////
             Runnable runnable = new Runnable() {
                 public void run() {
-                    System.err.println("Задание №" + num + " выполняется в потоке: " + Thread.currentThread().getName() +
-                            " всего потоков: " + threadsNumber);
+                    System.err.println("Задание_1 №" + num + " выполняется в потоке: " + Thread.currentThread().getName() +
+                            " всего потоков: " + threadPool.getThreadsNumber());
                 }
             };
             threadPool.execute(runnable);
         }
-
-
+        ///////////////////////////////
         try {
-            Thread.currentThread().sleep(10000);
+            Thread.currentThread().sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ///////////////////////////////
+        for (int i = 0; i < 30; i++) {
+            final int num = i;
+            ///////////////////////////////
+            try {
+                Thread.currentThread().sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ///////////////////////////////
+            Runnable runnable = new Runnable() {
+                public void run() {
+                    System.err.println("Задание_2 №" + num + " выполняется в потоке: " + Thread.currentThread().getName() +
+                            " всего потоков: " + threadPool.getThreadsNumber());
+                }
+            };
+            threadPool.execute(runnable);
+        }
+        try {
+            Thread.currentThread().sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
