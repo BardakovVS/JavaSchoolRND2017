@@ -9,6 +9,7 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -58,20 +59,22 @@ public class MyProxy implements InvocationHandler {
         }
 
         System.out.println("Started " + method.getName());
-        //System.out.println("Arg: " + Arrays.hashCode(args));
-        //System.out.println("target: " + target);
+        if (proxycache.containsKey(String.valueOf(Arrays.hashCode(args)))) {
+            result = proxycache.get(String.valueOf(Arrays.hashCode(args)));
+            resultBool = true;
+            System.out.println("Результат из кеша.");
+        }
 
-        for (String tempStr : proxycache.keySet()) {
+       /* for (String tempStr : proxycache.keySet()) {
             if (String.valueOf(Arrays.hashCode(args)).equals(tempStr)) {
                 result = proxycache.get(tempStr);
                 resultBool = true;
                 System.out.println("Результат из кеша.");
             }
-        }
+        }*/
         if (!resultBool) {
             result = method.invoke(target, args);
             System.out.println("Результат посчитан.");
-
 
             try {
                 appendUsingFileWriter(file.getPath(), "\n" + Arrays.hashCode(args) + " " + result);

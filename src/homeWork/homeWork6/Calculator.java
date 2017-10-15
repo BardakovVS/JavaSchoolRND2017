@@ -70,7 +70,6 @@ public class Calculator {
         p1 = new JPanel();
         GridLayout gl = new GridLayout(5, 4);
         p1.setLayout(gl);
-
         p1.add(buttonC);
         p1.add(buttonS);
         p1.add(buttonX);
@@ -92,9 +91,8 @@ public class Calculator {
         p1.add(buttonZ);
         p1.add(buttonEqual);
 
-
         windowContent.add("Center", p1);
-        JFrame frame = new JFrame("Calcularoe");
+        JFrame frame = new JFrame("Calculator");
         frame.setContentPane(windowContent);
 
         frame.pack();
@@ -132,7 +130,6 @@ public class Calculator {
             Class[] classes = new Class[]{CalculationsInterface.class};
             CalculationsInterface proxy = (CalculationsInterface) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
                     classes, new MyProxy(new Calculations()));
-            //proxy.getCalculation("11+22=");
             ////////////////////////////////////////////////////////
             JButton clickedButton = (JButton) event.getSource();
             String string = "";
@@ -180,7 +177,7 @@ public class Calculator {
                             Calculations calculations = new Calculations(/*displayField.getText()*/);
                             //string = calculations.getCalculation(displayField.getText());
                             string = proxy.getCalculation(displayField.getText());
-                            displayField.setText(displayField.getText() +" "+ string);
+                            displayField.setText(displayField.getText() + " " + string);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, "Некорректное выражение!");
                         }
