@@ -125,13 +125,7 @@ public class ThreadPool implements ThreadPoolInterface {
                     //e.printStackTrace();
                     interrupt();
                 }
-/*                if (killThread) {
-                    System.err.println("*** Поток убит! ***");
-                    killThread = false;
-                    interrupt();
-                    interrupted();
-                    Thread.currentThread().interrupt();
-                }*/
+
             }
         }
     }

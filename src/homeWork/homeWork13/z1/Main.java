@@ -24,7 +24,7 @@ public class Main {
         Task<String> task2 = new Task<>(() -> {
             System.out.println("Start task2");
             sleep(3000);
-            if (System.currentTimeMillis() % 2 != 7) {
+            if (System.currentTimeMillis() % 2 != 5) {
                 throw new Exception("Exception task2");
             }
             System.out.println("End task2");
